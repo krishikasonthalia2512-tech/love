@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Someone Special ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: radial-gradient(circle, #050505, #000);
+    color: white;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+section {
+    padding: 60px 15px;
+    text-align: center;
+    animation: fadeIn 1.5s ease;
+}
+
+h1, h2 { color: #ff0033; }
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.glow-btn {
+    background: #ff0033;
+    border: none;
+    color: white;
+    padding: 14px 30px;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 0 20px #ff0033;
+    transition: 0.3s;
+}
+
+.glow-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 50px #ff3366;
+}
+
+.card {
+    background: rgba(15, 15, 15, 0.9);
+    border: 1px solid #ff0033;
+    border-radius: 20px;
+    padding: 25px;
+    margin: 20px auto;
+    max-width: 850px;
+    backdrop-filter: blur(6px);
+}
+
+/* Polaroid Gallery */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+}
+
+.polaroid {
+    background: #111;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0 0 30px rgba(255,0,51,0.3);
+    transform: rotate(-2deg);
+    transition: 0.4s;
+    cursor: pointer;
+
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+}
+
+.polaroid.show {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.polaroid img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.polaroid:hover {
+    transform: scale(1.05) rotate(1deg);
+}
+
+/* Hearts */
+.heart {
+    position: fixed;
+    color: #ff0033;
+    animation: floatUp 6s linear forwards;
+    pointer-events: none;
+}
+
+@keyframes floatUp {
+    0% { bottom: -10px; opacity: 0; }
+    30% { opacity: 1; }
+    100% { bottom: 100vh; opacity: 0; }
+}
+
+/* Teddy */
+.teddy-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    font-size: 90px;
+}
+
+.teddy { animation: bounce 2s infinite; }
+.kiss { font-size: 45px; animation: kissMove 2s infinite; }
+
+@keyframes bounce {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+@keyframes kissMove {
+    0% { opacity: 0; transform: scale(0); }
+    50% { opacity: 1; transform: scale(1.4); }
+    100% { opacity: 0; transform: scale(0); }
+}
+
+/* Envelope */
+.envelope {
+    font-size: 80px;
+    cursor: pointer;
+    transition: 0.4s;
+}
+.envelope:hover {
+    transform: scale(1.2);
+}
+
+/* Lightbox */
+#lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.95);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+#lightbox img {
+    max-width: 90%;
+    max-height: 85vh;
+    border-radius: 20px;
+    box-shadow: 0 0 60px red;
+}
+
+#lightbox span {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 40px;
+    cursor: pointer;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(20px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+</style>
+</head>
+
+<body>
+
+<audio autoplay loop controls style="position:fixed; bottom:10px; left:10px; z-index:999;">
+  <source src="music.MP3" type="audio/mpeg">
+</audio>
+
+<section class="hero">
+    <h1 id="typing"></h1>
+    <p>Made only for <span id="name"></span> ❤️</p>
+    <button class="glow-btn" onclick="document.getElementById('countdown').scrollIntoView()">Begin the Journey</button>
+</section>
+
+<section id="countdown">
+    <h2>Countdown to 15 March 2026 🎂</h2>
+    <div class="card">
+        <h3 id="timer"></h3>
+    </div>
+</section>
+
+<section>
+    <h2>Our Story 📖</h2>
+    <div class="card">
+        ✨ The first time we spoke<br>
+        💬 Late night conversations<br>
+        😂 Your laugh became my favorite sound<br>
+        ❤️ Many memories yet to come...
+    </div>
+</section>
+
+<section>
+    <h2>Open My Letter 💌</h2>
+    <div class="card">
+        <div class="envelope" onclick="this.innerHTML='💖';document.getElementById('letter').style.display='block'">💌</div>
+        <p id="letter" style="display:none;margin-top:20px;">
+            You became my favorite thought without trying.  
+            This website exists only for you. Always.
+        </p>
+    </div>
+</section>
+
+<section>
+    <h2>Our Memories 📸</h2>
+    <div class="gallery">
+        <div class="polaroid"><img src="photo1.JPEG"></div>
+        <div class="polaroid"><img src="photo2.JPEG"></div>
+        <div class="polaroid"><img src="photo3.JPEG"></div>
+        <div class="polaroid"><img src="photo4.JPEG"></div>
+    </div>
+</section>
+
+<section>
+    <h2>Secret Surprise 🎁</h2>
+    <div class="card" id="locked">
+        <input type="password" id="pass" placeholder="Password">
+        <br><br>
+        <button class="glow-btn" onclick="unlock()">Unlock</button>
+    </div>
+
+    <div class="card" id="teddySurprise" style="display:none;">
+        <h3>Unlocked With Love 💖</h3>
+        <div class="teddy-container">
+            <div class="teddy">🧸</div>
+            <div class="kiss">💋</div>
+            <div class="teddy">🧸</div>
+        </div>
+ <p style="margin-top:15px;">
+            You are my favorite person, my peace, my chaos, my always.
+        </p> 
+    </div>
+</section>
+
+<div id="lightbox" onclick="closeLightbox()">
+    <span>✖</span>
+    <img id="lightboxImg">
+</div>
+
+<script>
+let yourName = prompt("Enter their name:");
+document.getElementById("name").innerText = yourName || "Someone Special";
+
+const text = "Two Months Until Your Special Day ❤️";
+let i = 0;
+function typeEffect() {
+    if (i < text.length) {
+        document.getElementById("typing").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeEffect, 70);
+    }
+}
+typeEffect();
+
+const birthday = new Date("March 15, 2026 00:00:00");
+function updateTimer() {
+    const now = new Date();
+    const diff = birthday - now;
+    const days = Math.floor(diff / (1000*60*60*24));
+    const hours = Math.floor((diff/(1000*60*60))%24);
+    const mins = Math.floor((diff/(1000*60))%60);
+    const secs = Math.floor((diff/1000)%60);
+    document.getElementById("timer").innerText =
+        `${days} days ${hours} hrs ${mins} mins ${secs} secs`;
+}
+setInterval(updateTimer,1000);
+updateTimer();
+
+setInterval(() => {
+    const heart = document.createElement("div");
+    heart.innerHTML = "❤️";
+    heart.className = "heart";
+    heart.style.left = Math.random()*100 + "vw";
+    heart.style.fontSize = (Math.random()*25 + 10) + "px";
+    document.body.appendChild(heart);
+    setTimeout(()=>heart.remove(),6000);
+},300);
+
+function unlock() {
+    if (document.getElementById("pass").value === "love") {
+        document.getElementById("locked").style.display = "none";
+        document.getElementById("teddySurprise").style.display = "block";
+    }
+}
+
+// Scroll reveal
+const polaroids = document.querySelectorAll('.polaroid');
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add("show");
+    });
+});
+polaroids.forEach(p => observer.observe(p));
+
+// Lightbox
+document.querySelectorAll(".polaroid img").forEach(img => {
+    img.addEventListener("click", () => {
+        document.getElementById("lightbox").style.display = "flex";
+        document.getElementById("lightboxImg").src = img.src;
+    });
+});
+function closeLightbox() {
+    document.getElementById("lightbox").style.display = "none";
+}
+</script>
+
+</body>
+</html>
